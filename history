@@ -1,0 +1,29 @@
+cd ..
+echo Hello World
+cat history
+ls
+cd ..
+cd
+ls
+cd
+cd
+ls
+cd
+ls
+history
+echo
+nano
+nano 123
+cd
+ls
+history
+nano 
+cd
+ls
+echo
+history
+nano
+cd
+ls
+echo
+history

@@ -20,14 +20,56 @@ int parseString(char* inp, char** parsed){
 
 int input() {
         char *inp=NULL;
-        char *parsed[1000];
         size_t len = 0;
         getline(&inp, &len, stdin);
-        if(!strcmp("exit\n", inp))
-            exit(0);
         inp[strlen(inp)-1]='\0';
         add_history(inp);
-        parseString(inp, parsed);
-        runCommand(parsed);
+        checkMulti(inp);
         return 0;
+}
+
+int checkMulti(char* inp){
+    char *temp;
+    int i=0;
+/**
+    command[i] = strtok(inp, ";");
+    i+=1;
+    while(1){
+        char *parsed[1000];
+        char og[strlen(inp)];            
+        strcpy(og, command[i-1]);
+        if(!strcmp("exit", command[i-1])){
+            exit(0);
+        }
+        parseString(command[i-1], parsed);    
+        runCommand(parsed, og);
+        command[i] = strtok(NULL, ";");
+        printf("%s\n", command[i]);
+        if(command[i]==NULL){
+            return 0;
+        }
+        i+=1;
+            
+    }
+*/
+    do {
+        // Splitting at next ; if exists
+        for( temp = inp; *inp && *inp != ';'; inp++ )
+                ;
+        if(*inp == ';'){
+            *inp='\0';
+            while(*(inp+1)==' ') *inp++; //Removing leading whitespaces
+            *inp++ = '\0';
+        }
+        if (temp) {
+            char *parsed[1000];
+            char og[strlen(temp)];            
+            strcpy(og, temp);
+            if(!strcmp("exit", temp)){
+                exit(0);
+            }
+            parseString(temp, parsed);    
+            runCommand(parsed, og);
+        }
+    } while( *inp );
 }

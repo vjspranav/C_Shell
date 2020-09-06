@@ -4,7 +4,7 @@
 
 static int num_custom_commands=4;
 
-int runCommand(char **parsed){
+int runCommand(char **parsed, char* input){
     char* custom_commands[num_custom_commands];
     custom_commands[0]="echo";
     custom_commands[1]="ls";
@@ -18,7 +18,7 @@ int runCommand(char **parsed){
             break;
         }
     if(command_id)
-        runOwnCommand(command_id);
+        runOwnCommand(command_id, &input[strlen(custom_commands[command_id-1]) + 1 ]);
     else{
         int f = fork();
         if(f==0){
@@ -32,9 +32,9 @@ int runCommand(char **parsed){
     }
 } 
 
-int runOwnCommand(int command_id){
+int runOwnCommand(int command_id, char* input){
     switch(command_id){
-        case 1: printf("Entered echo\n"); break;
+        case 1: printf("Entered echo with argument: %s\n", input); break;
         case 2: printf("Entered ls\n"); break;
         case 3: printf("Entered cd\n"); break;
         case 4: print_history(); break;

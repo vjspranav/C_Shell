@@ -6,6 +6,7 @@ int add_history(char *command){
     fhi=fopen("history", "a");
     if (!fhi) {
         printf("Unable to save to history, history won't be logged\n");
+        perror("Error: ");
         return -1;
     }
     fprintf(fhi, "%s\n", command);

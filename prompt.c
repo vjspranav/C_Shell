@@ -18,7 +18,7 @@ void prompt() {
     if(!strncmp(homedir, cwd, strlen(homedir)))
         printf("<%s@%s:~%s>$ ", getenv("USER"), hostname, &cwd[strlen(homedir)]);
     else
-        printf("<%s@%s:%s>$ ", getenv("USER"), hostname, homedir);        
+        printf("<%s@%s:%s>$ ", getenv("USER"), hostname, cwd);        
  
     
     /* *

@@ -130,3 +130,38 @@ echo Hello;
 echo Hello;   cd Dir; echo dir
 git status
 git add .
+git commit -s
+git remote -v
+git push https://github.com/vjspranav/C_Shell HEAD:v1
+history
+cd ..
+cd /home/vjspranav
+cd /home/vjspranav
+cd /home/vjsprana
+cd /home/vjspranav
+cd /home/vjspranav
+cd /home/vjspranav
+cd /home/vjspranav
+cd ..
+cd ..
+exit
+cd ..
+cd .
+cd ~/
+exit
+cd ~
+exit
+cd ~
+cd ~/
+cd ~/Dir
+exit
+cd ~
+cd ~/
+cd ~/vjspranav
+exit
+cd /home
+cd ~
+exit
+cd ~
+cd ..
+cd /home/vjspranav

@@ -7,7 +7,7 @@ static int num_custom_commands=4;
 int runCommand(char **parsed, char* input){
     char* custom_commands[num_custom_commands];
     custom_commands[0]="echo";
-    custom_commands[1]="lsi";
+    custom_commands[1]="ls";
     custom_commands[2]="cd";
     custom_commands[3]="history";
 
@@ -33,9 +33,8 @@ int runCommand(char **parsed, char* input){
 } 
 
 int runOwnCommand(int command_id, char* input){
-    char cwd[PATH_MAX];
     switch(command_id){
-        case 1: printf("Entered echo with argument: %s\n", input); break;
+        case 1: echo(input); break;
         case 2: printf("Entered ls\n"); break;
         case 3: cd(input); break;
         case 4: print_history(); break;

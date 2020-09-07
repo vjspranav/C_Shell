@@ -58,9 +58,9 @@ int checkMulti(char* inp){
                 ;
         if(*inp == ';'){
             *inp='\0';
-            while(*(inp+1)==' ') *inp++; //Removing leading whitespaces
-            *inp++ = '\0';
         }
+        while(*(inp+1)==' ') *inp++; //Removing leading whitespaces
+        *inp++ = '\0';
         if (temp) {
             char *parsed[1000];
             char og[strlen(temp)];            
@@ -68,8 +68,10 @@ int checkMulti(char* inp){
             if(!strcmp("exit", temp)){
                 exit(0);
             }
-            parseString(temp, parsed);    
-            runCommand(parsed, og);
+            int i=0;
+            while(temp[i]==' ') i++;
+            parseString(&temp[i], parsed);    
+            runCommand(parsed, &og[i]);
         }
     } while( *inp );
 }

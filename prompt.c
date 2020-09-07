@@ -1,10 +1,6 @@
 #include "prompt.h"
 #include "headers.h"
 
-int startsWith(){
-    
-}
-
 void prompt() {
     extern char homedir[PATH_MAX];
     char hostname[1024];

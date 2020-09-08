@@ -18,7 +18,7 @@ int runCommand(char **parsed, char* input){
             break;
         }
     if(command_id)
-        runOwnCommand(command_id, &input[strlen(custom_commands[command_id-1]) + 1 ]);
+        runOwnCommand(command_id, &input[strlen(custom_commands[command_id-1]) + 1 ], parsed);
     else{
         int f = fork();
         if(f==0){
@@ -32,10 +32,10 @@ int runCommand(char **parsed, char* input){
     }
 } 
 
-int runOwnCommand(int command_id, char* input){
+int runOwnCommand(int command_id, char* input, char** parsed){
     switch(command_id){
         case 1: echo(input); break;
-        case 2: printf("Entered ls\n"); break;
+        case 2: ls(parsed); break;
         case 3: cd(input); break;
         case 4: print_history(); break;
         default: break;

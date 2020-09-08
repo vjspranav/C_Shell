@@ -209,3 +209,55 @@ exit
  echo HEllo
     echo    Hello World
 echo Hello World       ; cd ~/..
+nano &
+emaacs &
+gedit &
+exit
+exit
+exit
+ls
+ls -l Hello
+ls Hello World -l -a
+exit
+ls -l Hello World -a
+ls -la
+exit
+ls -la
+exit
+ls -l
+exit
+exit
+ls -l
+ls -a
+ls -ls
+ls -la
+exit
+ls -a
+ls -a
+ls -l
+[ls -l
+ls -al
+ls -s
+ls -a
+exit
+ls -l
+exit
+ls -a
+ls -l
+ls -l hello
+ls -lz hello
+exit
+ls -lsa
+ls -l  -a   Hello
+echo Hello
+echo Worl   j
+exit
+exit
+exit
+ls
+ls -l
+ls -a
+ls /home/vjspranav
+ls /home/vjspranav -l
+ls -l /home/vjspranav -a
+exit

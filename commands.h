@@ -2,3 +2,5 @@
 #include "cd.h"
 #include "echo.h"
 #include "ls.h"
+#include "pwd.h"
+#include "pinfo.h"

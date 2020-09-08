@@ -2,7 +2,7 @@
 #include "commands.h"
 #include "commandHandler.h"
 
-static int num_custom_commands=4;
+static int num_custom_commands=6;
 
 int runCommand(char **parsed, char* input){
     char* custom_commands[num_custom_commands];
@@ -10,6 +10,8 @@ int runCommand(char **parsed, char* input){
     custom_commands[1]="ls";
     custom_commands[2]="cd";
     custom_commands[3]="history";
+    custom_commands[4]="pwd";
+    custom_commands[5]="pinfo";
 
     int i, command_id=0;
     for(i=0;i<num_custom_commands;i++)
@@ -38,6 +40,8 @@ int runOwnCommand(int command_id, char* input, char** parsed){
         case 2: ls(parsed); break;
         case 3: cd(input); break;
         case 4: print_history(); break;
+        case 5: pwd(); break;
+        case 6: pinfo(input); break;
         default: break;
     }
     return 0;

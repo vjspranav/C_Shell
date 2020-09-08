@@ -22,14 +22,18 @@ int input() {
         char *inp=NULL;
         size_t len = 0;
         getline(&inp, &len, stdin);
+        // Fixes for pressing enter without any command
+        if(inp[0]=='\n')
+            return 0;
         inp[strlen(inp)-1]='\0';
         add_history(inp);
         checkMulti(inp);
+        inp=NULL;
         return 0;
 }
 
 int checkMulti(char* inp){
-    char *temp;
+    char *temp=NULL;
     int i=0;
 /**
     command[i] = strtok(inp, ";");
@@ -72,6 +76,7 @@ int checkMulti(char* inp){
             while(temp[i]==' ') i++;
             parseString(&temp[i], parsed);    
             runCommand(parsed, &og[i]);
+            memset(og, 0, strlen(og));
         }
     } while( *inp );
 }

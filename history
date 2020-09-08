@@ -261,3 +261,85 @@ ls /home/vjspranav
 ls /home/vjspranav -l
 ls -l /home/vjspranav -a
 exit
+pwd
+pwd
+cd ..
+cd ..
+pwd
+cd /home/vjspranav
+cd ~
+exit
+cd ..
+exit
+ls ..
+echo Hello World
+exit
+echo Hello
+ls ..
+cd ..
+ls
+exit
+pwd
+cd ..
+
+
+
+
+
+
+exit
+kjgn
+kejfb
+pinfo
+pinfo 123
+exit
+exit
+pid
+pinfo
+pid 1234
+pinfo 1234
+exit
+pinfo
+pinfo
+pinfo 1234
+pinfo
+pinfo
+pinfo 2
+pinfo
+exit
+pinfo
+pinfo
+pinfo 1234
+pinfo
+exit
+pinfo
+pinfo 1234
+pinfo
+exit
+pinfo
+pinfo 12
+pinfo
+exit
+pinfo; pinfo 123; pinfo
+exit
+pinfo
+pinfo 123
+pinfo
+pinfo
+exit
+exit
+exit
+pinfo
+exit
+pinfo 124
+exit
+pinfo 12
+pinfo
+exit
+pinfo
+pinfo 12
+pinfo -12
+pinfo 87234t23
+pinfo abc
+git add .
+git commit -a

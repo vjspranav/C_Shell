@@ -343,3 +343,39 @@ pinfo 87234t23
 pinfo abc
 git add .
 git commit -a
+git push origin HEAD:v1
+pinfo 
+make
+make
+pinfo
+pinfo 1234
+exit
+make
+pinfo
+exit
+exit
+pinfo
+exit
+pinfo
+pinfo
+exit
+bupinfo
+exit
+pinfo
+exit
+pinfo
+exit
+pinfo
+pinfo 12
+exit
+pinfo 12
+pinfo 123
+pinfo 
+pinfo 12345
+exit
+pinfo
+exit
+pinfo
+pinfo
+pinfo 234
+exit

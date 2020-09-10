@@ -1,20 +1,20 @@
-nano &
-vim &
 exit
-lsblk &
-nano &
-vim &
+history
 exit
-lsblk &
-nano &
-vim &
+cd ..
+history
 exit
+history
 exit
-exit
-clear
-clear
-lsblk
-lsblk &
-lsblk & 
-gedit &
+cd ../
+cd ../../..
+cd ..
+cd ../../../..
+cd /home
+cd /home
+cd /home
+cd /home
+cd /home
+cd ..
+cd ~
 exit

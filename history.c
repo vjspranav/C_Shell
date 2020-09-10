@@ -2,14 +2,16 @@
 #include "headers.h"
 char hist[40][PATH_MAX];
 int nlines;
+extern char homedir[PATH_MAX];
+extern char historypath[PATH_MAX];
 
 int stoi (char * input){
     int output;
     char * end;
     output = strtol (input, & end, 10);
     if (end == input) 
-        return -1;
-    if(strlen(input)<=2)
+        return 10;
+    if(output>=1 || output<=20)
         return output;
     else
         return 10;
@@ -18,9 +20,9 @@ int stoi (char * input){
 int add_history(char *command){
     FILE *fhi;
     char * line=NULL;
-    int i=0, j=0;
+    int i=0, j=0, k=0;
     ssize_t read, len=0;
-    fhi=fopen("history", "r");
+    fhi=fopen(historypath, "r");
     if (!fhi) {
         printf("Unable to save to history, history won't be logged\n");
         perror("Error: ");
@@ -35,13 +37,13 @@ int add_history(char *command){
         for(j=0;j<19;j++)
             strcpy(hist[j], hist[j+1]);
         fclose(fhi);
-        fhi=fopen("history", "w");
+        fhi=fopen(historypath, "w");
         for(j=0;j<19;j++){
             fprintf(fhi, "%s", hist[j]);        
         }
         fclose(fhi);
     }
-    fhi=fopen("history", "a");
+    fhi=fopen(historypath, "a");
     fprintf(fhi, "%s\n", command);
     fclose(fhi);
     return 0;
@@ -50,10 +52,10 @@ int add_history(char *command){
 int print_history(char * input){
     int n=stoi(input);
     char * line=NULL;
-    int i=0;
+    int i=0, j=0, k=0;
     ssize_t read, len=0;
     FILE *fhi;
-    fhi=fopen("history", "r");
+    fhi=fopen(historypath, "r");
     if (!fhi) {
         printf("Unable to open history\n");
         return -1;

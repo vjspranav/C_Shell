@@ -1,10 +1,79 @@
 # Terminal Written in C
 A custom terminal for Linux supporting bash commands with support for almost all built in functions either through system call or custom written built in function.
 
-## Custom Functions
+## Requirements
+__GCC Version >= 10.2.0__  
+Will work for lower Versions also but there could be unexpected warnings and errors.
 
 ## How To Use
+__Run The Following command in the dir where you cloned the repo__
+```
+make
+```
+or
+__Copy Paste the following__
+```
+git clone https://github.com/vjspranav/C_Shell -b v1
+cd C_Shell
+make
+```
 
+## Custom Functions
+1. __echo__
+```
+echo string
+```
+> Ignoring extra whitespaces prints on shell
+
+2. __ls__
+```
+ls <dirname> <dir2name> <filename> [options]
+```
+> ls or ls -a or ls -l or ls -al/la with dirname(s) and/or filename(s) and/or no arguments list it out.
+> Tried to mimic actuall shell output/performace with multiple folders given or files given.
+
+3. __cd__
+```
+cd dirpath
+```
+> dir path could be relative or absolute. '.' would be in same dir, '..' to previous dir, '\~' for terminal execute dir. 
+Relative wrt to '\~' is also allowed.
+
+4. __history__
+```
+history <num>
+```
+> last 10 commands in history would be printed if no num is provided else last num number of commands will be printed. (Stores only last 20 commands)
+
+5. __pwd__
+```
+pwd
+```
+> Print current dir path
+
+6. __pinfo__
+```
+pinfo
+```
+will give
+```
+pid -- 231
+Process Status -- {R/S/S+/Z}
+memory -- 67854{​Virtual Memory​}
+Executable Path -- ~/a.out
+```
+or
+```
+pinfo pid
+```
+will give
+```
+pid -- (pid)
+Process Status -- {R/S/S+/Z}
+memory --123456 {​Virtual Memory​}
+Executable Path -- /usr/bin/gcc
+```
+>> Gives info of the process with process id pid, if no pid is given the info of shell is shown.
 
 ## Files Description
 All headers files have Macros and function definations for global accesibility of the functions in the respective C files

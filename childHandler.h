@@ -9,7 +9,7 @@ struct process{
 
 typedef struct process process;
 
-int killChilds();
+void killChilds(int id);
 int killallChilds();
 
 

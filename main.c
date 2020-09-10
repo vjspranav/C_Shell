@@ -8,6 +8,7 @@ int main()
     // Getting the homedir
     if (getcwd(homedir, sizeof(homedir)) == NULL)
         exit(0);
+    signal(SIGCHLD, killChilds);
     while (1)
     {
         prompt();

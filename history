@@ -1,10 +1,3 @@
-vim &
-fg
-lsblk &
-exit
-nano &
-exit
-lsblk &
 nano &
 vim &
 exit
@@ -17,4 +10,11 @@ nano &
 vim &
 exit
 exit
+exit
+clear
+clear
+lsblk
+lsblk &
+lsblk & 
+gedit &
 exit

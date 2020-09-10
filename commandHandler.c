@@ -6,10 +6,6 @@ static int num_custom_commands=6;
 extern int numbgChilds;
 extern process bgProcess[50];
 
-void sig_hup(int Sig){
-    fprintf(stderr, "SIGHUP received, pid = %ld\n", (long)getpid());
-}
-
 int isAnd(char *input){
     int i=strlen(input)-1;
     *input=*(input+i);

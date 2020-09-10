@@ -1,5 +1,5 @@
-#ifndef __ls_H
-#define __ls_H
+#ifndef __LS_H
+#define __LS_H
 
 int ls(char** parsed);
 

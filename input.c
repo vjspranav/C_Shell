@@ -4,7 +4,7 @@
 #include "input.h"
 
 int parseString(char* inp, char** parsed){
-    int i=0;
+    int i=0;    
     parsed[i] = strtok(inp, " ");
     i+=1;
     while(1){
@@ -73,10 +73,11 @@ int checkMulti(char* inp){
                 killallChilds();
                 exit(0);
             }
-            int i=0;
-            while(temp[i]==' ') i++;
-            parseString(&temp[i], parsed);    
-            runCommand(parsed, &og[i]);
+             int i=0;
+             while(temp[i]==' ') i++;
+             removeTrailing(&temp[i]);
+             parseString(&temp[i], parsed);    
+             runCommand(parsed, &og[i]);
             memset(og, 0, strlen(og));
         }
     } while( *inp );

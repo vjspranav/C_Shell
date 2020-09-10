@@ -1,20 +1,20 @@
-history
 exit
-history
-history 15
+vim
+vim &; echo Hello World; 
 exit
-history
-history  5
+vim &
 exit
-history
+vim &
 exit
-history 4
+nano &
+vim & 
+vim &
+vim  &
 exit
-history
-history 4
-exit
-history 4
-history 19
-history 20
-history 0
-exit
+vim & 
+vim &   ;  echo Hello World
+nano & 
+exho Hello &
+echo Hello &
+git add .
+git commit -a

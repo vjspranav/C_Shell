@@ -3,7 +3,8 @@
 #include "commandHandler.h"
 
 static int num_custom_commands=6;
-
+extern int numbgChilds;
+extern process bgProcess[50];
 
 void sig_hup(int Sig){
     fprintf(stderr, "SIGHUP received, pid = %ld\n", (long)getpid());
@@ -41,31 +42,42 @@ int runCommand(char **parsed, char* input){
         runOwnCommand(command_id, &input[strlen(custom_commands[command_id-1]) + 1 ], parsed);
     else{
         int is_and=isAnd(input);
-        int f = fork();
         if(is_and){
             int i=0;
             while(parsed[i]!=NULL)
                 i+=1;
             parsed[i-1]=NULL;
+            if(numbgChilds>50){
+                printf("More than 50 childs in background, request terminated");
+                return -1;
+            }
         }
-        if(f==0){
-            if(is_and)
-                 setpgid(0, 0);
-            if(execvp(parsed[0], parsed)==-1)
-                printf("bash: %s: command not found\n", parsed[0]);
-            exit(0);
-        }
-        else{
+        int f = fork();
+        if (f>0){
             if(!is_and){
                 int status;
                 do{
                     waitpid(f, &status, WUNTRACED);
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
             }else{
-            
+                bgProcess[numbgChilds].id=f;
+                strcpy(bgProcess[numbgChilds].name, parsed[0]);
+                numbgChilds+=1;
             }
             return 0;
+        }else if(f<0){
+            printf("Fork Failed\n");
+        }else {
+            if(is_and){
+                setpgid(0, 0);
+            }
+            if(execvp(parsed[0], parsed)==-1){
+                printf("bash: %s: command not found\n", parsed[0]);
+                exit(0);
+            }
+            exit(0);
         }
+        
     }
 } 
 

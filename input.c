@@ -70,6 +70,7 @@ int checkMulti(char* inp){
             char og[strlen(temp)];            
             strcpy(og, temp);
             if(!strcmp("exit", temp)){
+                killallChilds();
                 exit(0);
             }
             int i=0;

@@ -1,7 +1,3 @@
-exit
-vim
-vim &; echo Hello World; 
-exit
 vim &
 exit
 vim &
@@ -16,5 +12,9 @@ vim &   ;  echo Hello World
 nano & 
 exho Hello &
 echo Hello &
+git add .
+git commit -a
+git push 
+git push origin HEAD:v1
 git add .
 git commit -a

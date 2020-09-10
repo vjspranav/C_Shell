@@ -61,6 +61,7 @@ int runCommand(char **parsed, char* input){
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
             }else{
                 bgProcess[numbgChilds].id=f;
+                bgProcess[numbgChilds].inbg=0;
                 strcpy(bgProcess[numbgChilds].name, parsed[0]);
                 numbgChilds+=1;
             }

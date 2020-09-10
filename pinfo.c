@@ -35,7 +35,6 @@ int pinfo(char* input){
     
     memset(buff, 0, strlen(buff));
     sprintf(buff, "/proc/%d/exe", id);
-    printf("%s\n", buff);
     if(readlink(buff, mem, 1000)==-1){
         perror("Error: ");
         return -1;

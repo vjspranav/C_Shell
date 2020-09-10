@@ -1,7 +1,3 @@
-        end-=1;
-    }
-    int i=start, j=0;
-    while(text[i]!='\0'){
         if(!(text[i]==' ' && text[i+1]==' ')){
             nText[j]=text[i];
             j++;
@@ -17,4 +13,8 @@ exit
 nano &
 nano &
 echo
+exit
+nano &
+nano &  
+nano &     
 exit

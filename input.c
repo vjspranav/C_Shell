@@ -75,7 +75,6 @@ int checkMulti(char* inp){
             }
              int i=0;
              while(temp[i]==' ') i++;
-             removeTrailing(&temp[i]);
              parseString(&temp[i], parsed);    
              runCommand(parsed, &og[i]);
             memset(og, 0, strlen(og));

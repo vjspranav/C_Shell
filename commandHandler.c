@@ -9,10 +9,10 @@ extern process bgProcess[50];
 int isAnd(char *input){
     int i=strlen(input)-1;
     *input=*(input+i);
-    while(*input==' ')
-        *input-=1;
-     if(*input=='&'){
-         *input=='\0';
+    while(input[i]==' ')
+        i-=1;
+     if(input[i]=='&'){
+         input[i]=='\0';
          return 1;
      }
      return 0;

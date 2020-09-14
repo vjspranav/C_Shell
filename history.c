@@ -20,28 +20,35 @@ int stoi (char * input){
 int add_history(char *command){
     FILE *fhi;
     char * line=NULL;
-    int i=0, j=0, k=0;
+    int i=0, j=0, k=0, nf=0;
     ssize_t read, len=0;
     fhi=fopen(historypath, "r");
     if (!fhi) {
-        printf("Unable to save to history, history won't be logged\n");
-        perror("Error: ");
-        return -1;
-    }
-    while ((read = getline(&line, &len, fhi)) != -1) {
-        strcpy(hist[i], line);
-        i++;
-    }
-    nlines=i;
-    if(nlines>=20){
-        for(j=0;j<19;j++)
-            strcpy(hist[j], hist[j+1]);
-        fclose(fhi);
+        nf=1;
         fhi=fopen(historypath, "w");
-        for(j=0;j<19;j++){
-            fprintf(fhi, "%s", hist[j]);        
+        if (!fhi) {
+            printf("Unable to save to history, history won't be logged\n");
+            perror("Error: ");
+            return -1;
         }
         fclose(fhi);
+    }
+    if(nf!=1){
+        while ((read = getline(&line, &len, fhi)) != -1) {
+            strcpy(hist[i], line);
+            i++;
+        }
+        nlines=i;
+        if(nlines>=20){
+            for(j=0;j<19;j++)
+                strcpy(hist[j], hist[j+1]);
+            fclose(fhi);
+            fhi=fopen(historypath, "w");
+            for(j=0;j<19;j++){
+                fprintf(fhi, "%s", hist[j]);        
+            }
+            fclose(fhi);
+        }
     }
     fhi=fopen(historypath, "a");
     fprintf(fhi, "%s\n", command);
@@ -52,8 +59,9 @@ int add_history(char *command){
 int print_history(char * input){
     int n=stoi(input);
     char * line=NULL;
-    int i=0, j=0, k=0;
+    int i=0, j=0, cmdInHistory=0;
     ssize_t read, len=0;
+    n=n>20?20:n; // If input is greater than 20, print only 20;
     FILE *fhi;
     fhi=fopen(historypath, "r");
     if (!fhi) {
@@ -66,8 +74,16 @@ int print_history(char * input){
         strcpy(hist[i], line);
         i++;
     }
-    for(i=20-n;i<20;i++)
-        printf("%s", hist[i]);
-    fclose(fhi);
-    return 0;
+    if(n>i){
+        printf("Only %d entries\n", i);
+        for(j=0;j<i;j++)
+            printf("%s", hist[j]);
+        fclose(fhi);
+        return 0;
+    }else{
+        for(j=i-n;j<i;j++)
+            printf("%s", hist[j]);
+        fclose(fhi);
+        return 0;        
+    }
 }

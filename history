@@ -1,20 +1,12 @@
-        if(!(text[i]==' ' && text[i+1]==' ')){
-            nText[j]=text[i];
-            j++;
-        }
-        i++;
-    }
-    nText[j]='\0';
-    printf("%s\n", nText);
-    text= &nText[0];
-}
+ls
+history
+history 6
+history 2
 exit
+history
+history 2
 exit
-nano &
-nano &
-echo
-exit
-nano &
-nano &  
-nano &     
+history
+history 3
+history
 exit

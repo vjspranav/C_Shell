@@ -1,12 +1,20 @@
-ls
-history
-history 6
-history 2
+pinfo
+pinfo 35767
+pinfo 35768
+pinfo 35769
+pinfo 35770
+bg 
 exit
-history
-history 2
+nano &
+pinfo
+pinfo 36466
+f
+nano 123
+while 1;
+nano &
+vim
+f
+make
 exit
-history
-history 3
-history
 exit
+

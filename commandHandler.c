@@ -4,7 +4,9 @@
 
 static int num_custom_commands=6;
 extern int numbgChilds;
-extern process bgProcess[50];
+//extern process bgProcess[50];
+extern Node *listptr;
+process tempProcess;
 
 int isAnd(char *input){
     int i=strlen(input)-1;
@@ -43,10 +45,6 @@ int runCommand(char **parsed, char* input){
             while(parsed[i]!=NULL)
                 i+=1;
             parsed[i-1]=NULL;
-            if(numbgChilds>50){
-                printf("More than 50 childs in background, request terminated");
-                return -1;
-            }
         }
         int f = fork();
         if (f>0){
@@ -56,10 +54,11 @@ int runCommand(char **parsed, char* input){
                     waitpid(f, &status, WUNTRACED);
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
             }else{
-                bgProcess[numbgChilds].id=f;
-                bgProcess[numbgChilds].inbg=0;
-                strcpy(bgProcess[numbgChilds].name, parsed[0]);
+                tempProcess.id=f;
+                tempProcess.inbg=0;
+                strcpy(tempP.name, parsed[0]);
                 numbgChilds+=1;
+                create(listptr, tempProcess);
             }
             return 0;
         }else if(f<0){

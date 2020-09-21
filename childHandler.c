@@ -4,30 +4,29 @@
 
 int numbgChilds=0;
 
-process bgProcess[50];
+//process bgProcess[50];
+Node *listptr;
 
-int getiofid(int id){
+/*
+   int getiofid(int id){
     int i;
     for(i=0;i<numbgChilds;i++)
         if(bgProcess[i].id==id)
             return i;
 }
+*/
 
 void killChilds(int id){
     int status;
+    Node *t;
     int pid=waitpid(-1, &status, WNOHANG);
     if(pid>0){
-        printf("[] %s pid %d exited successfully\n", bgProcess[getiofid(pid)].name, pid);
-        bgProcess[getiofid(pid)].inbg=1;
+        t=getNodewithid(listptr, pid);
+        printf("[] %s pid %d exited successfully\n", t->data.name, pid);
+        deleteNodewithid(listptr, pid);
     }
 }
 
 int killallChilds(){
-    int i;
-    for(i=0;i<numbgChilds;i++){
-        if(!bgProcess[i].inbg){
-            kill(bgProcess[i].id, SIGKILL);
-            printf("[] %s Stopped pid: %d\n", bgProcess[i].name, bgProcess[i].id);
-        }
-    }    
+    deleteAllNodes(listptr);
 }

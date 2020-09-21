@@ -4,6 +4,8 @@
 char homedir[PATH_MAX];
 char historypath[PATH_MAX];
 
+extern Node *listptr;
+
 void addhistory(){
     int n=strlen(historypath);
     historypath[n]='/';
@@ -29,6 +31,7 @@ int main()
     signal(SIGCHLD, killChilds);
     while (1)
     {
+        
         prompt();
         input();
     }

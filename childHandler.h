@@ -1,5 +1,6 @@
 #ifndef __CHILDHANDLER_H
 #define __CHILDHANDLER_H
+#include <linux/limits.h>
 
 struct process{
     int id;

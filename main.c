@@ -31,7 +31,6 @@ int main()
     signal(SIGCHLD, killChilds);
     while (1)
     {
-        
         prompt();
         input();
     }

@@ -1,17 +1,16 @@
 #include "ll.h"
-#include "headers.h"
 
-
-Node *temp, last;
+Node *temp, *last;
+extern Node *listptr;
 
 // Private functions
-void delete_beg(Node *listptr){
+void delete_beg(){
 	Node *t=listptr;
 	listptr=listptr->next;
 	free(t);	
 }
 
-void delete_last(Node *listptr){
+void delete_last(){
 	Node *t=listptr;
     while(t->next!=last) t=t->next;
     last=t;
@@ -21,7 +20,7 @@ void delete_last(Node *listptr){
 }
 
 // Public Functions
-void create(Node *listptr, process n){
+void createListNode(process n){
 	Node *newnode = malloc ( sizeof(Node) );
 	newnode->data.inbg = n.inbg; // Handle  copy
 	newnode->data.id = n.id; // Handle  copy
@@ -46,12 +45,12 @@ int count(){
 	return n;
 }
 
-int deleteNodewithid(Node *listptr, int id){
+int deleteNodewithid(int id){
 	Node *t=listptr, *t1;
     if(listptr->data.id==id)
-        delete_beg(listptr);
+        delete_beg();
     else if(last->data.id==id)
-        delete_last(listptr);
+        delete_last();
     else{
         while(t->next->data.id!=id && t->next!=last) t=t->next;
         if(t->next->data.id!=id)
@@ -64,34 +63,37 @@ int deleteNodewithid(Node *listptr, int id){
     }
 }
 
-Node *getNodewithid(Node *listptr, int id){
+Node *getNodewithid(int id){
 	Node *t=listptr, *t1;
-    while(t->next!=NULL){
+    while(t!=NULL){
         if(t->data.id==id)
             return t;
-        t1=t->next;
+        t=t->next;
     }
     return NULL;
 }
 
-void printProcess(Node *listptr){
+void printProcess(){
 	int i=0;
     Node *t=listptr;
     if(t==NULL)
-        printf("No Process in bg");
+        printf("No Process in bg\n");
     else{
         while(t->next!=NULL){
-            printf("[%d] %s with id=%d\n", i++, t->data.name, t->data.id)
+            printf("[%d] %s with id=%d\n", i++, t->data.name, t->data.id);
             t=t->next;
         }
+        printf("[%d] %s with id=%d\n", i++, t->data.name, t->data.id);
     }
 }
 
-void deleteAllNodes(Node *listptr){
+void deleteAllNodes(){
     Node *t=listptr;
     while(t!=NULL){
+        kill(t->data.id, SIGKILL);
         printf("[] %s Stopped pid: %d\n", t->data.name, t->data.id);
-        delete_beg(listptr);
+        listptr=t->next;
+        free(t);
         t=listptr;
     }   
 }

@@ -1,5 +1,6 @@
 #ifndef __LL_H
 #define __LL_H
+#include "headers.h"
 
 struct Node{
 	process data;
@@ -8,11 +9,11 @@ struct Node{
 
 typedef struct Node Node;
 
-void create(Node *listptr, process n);
+void createListNode(process n);
 int count();
-int deleteNodewithid(Node *listptr, int id);
-Node *getNodewithid(Node *listptr, int id);
-void printProcess(Node *listptr);
-void deleteAllNodes(Node *listptr);
+int deleteNodewithid(int id);
+Node *getNodewithid(int id);
+void printProcess();
+void deleteAllNodes();
 
 #endif

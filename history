@@ -1,20 +1,20 @@
-pinfo
-pinfo 35767
-pinfo 35768
-pinfo 35769
-pinfo 35770
-bg 
-exit
 nano &
-pinfo
-pinfo 36466
-f
-nano 123
-while 1;
+vim &
+sleep 10 &
+sleep 2 &
 nano &
-vim
-f
-make
+vim &
 exit
+sleep 10&
+sleep 10&
+sleep 10 &
+sleep 2 &
+lsblk &
+lsblk &
 exit
-
+lsblk &
+lsblk &
+sleep 10&
+sleep 10 &
+sleep 2 &
+exit

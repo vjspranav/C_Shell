@@ -56,9 +56,9 @@ int runCommand(char **parsed, char* input){
             }else{
                 tempProcess.id=f;
                 tempProcess.inbg=0;
-                strcpy(tempP.name, parsed[0]);
+                strcpy(tempProcess.name, parsed[0]);
                 numbgChilds+=1;
-                create(listptr, tempProcess);
+                createListNode(tempProcess);
             }
             return 0;
         }else if(f<0){

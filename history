@@ -1,20 +1,20 @@
+exit
 nano &
 vim &
-sleep 10 &
-sleep 2 &
+123 &
+4
+vim &
+nano &
+lsblk &
 nano &
 vim &
+123 &
+vim &
+nano &
+pinfo 10476
 exit
-sleep 10&
-sleep 10&
-sleep 10 &
-sleep 2 &
+123 &
+nano 123 &
 lsblk &
-lsblk &
-exit
-lsblk &
-lsblk &
-sleep 10&
-sleep 10 &
-sleep 2 &
+vim &
 exit

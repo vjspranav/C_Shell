@@ -21,7 +21,10 @@ void killChilds(int id){
     int pid=waitpid(-1, &status, WNOHANG);
     if(pid>0){
         Node *t=getNodewithid(pid);
-        printf("[] %s pid %d exited successfully\n", t->data.name, pid);
+        if(status==0)
+            printf("\n[] %s pid %d exited successfully\n", t->data.name, pid, status, id);
+        else
+            printf("\n[] %s pid %d exited abnormally with error: %d\n", t->data.name, pid, status);
         deleteNodewithid(pid);
     }
 }

@@ -15,7 +15,7 @@ void delete_last(){
     while(t->next!=last) t=t->next;
     last=t;
     t=t->next;
-    t->next=NULL;
+    last->next=NULL;
     free(t);	
 }
 
@@ -26,7 +26,8 @@ void createListNode(process n){
 	newnode->data.id = n.id; // Handle  copy
     strcpy(newnode->data.name, n.name);
 	newnode->next = NULL;
-	if(listptr==NULL)
+    temp=last;
+    if(listptr==NULL)
 		listptr = newnode;
 	else
 		temp->next = newnode;
@@ -57,7 +58,7 @@ int deleteNodewithid(int id){
             printf("Child already killed\n");
         else{
             t1=t->next;
-            t->next=t->next->next;
+            t->next=t1->next;
             free(t1);
         }
     }
@@ -89,11 +90,12 @@ void printProcess(){
 
 void deleteAllNodes(){
     Node *t=listptr;
+    int i=0;
     while(t!=NULL){
         kill(t->data.id, SIGKILL);
-        printf("[] %s Stopped pid: %d\n", t->data.name, t->data.id);
+        printf("[%d] %s with pid %d Stopped\n", i++, t->data.name, t->data.id);
         listptr=t->next;
-        free(t);
+        //free(t);
         t=listptr;
     }   
 }

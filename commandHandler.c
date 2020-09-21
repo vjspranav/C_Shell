@@ -68,8 +68,8 @@ int runCommand(char **parsed, char* input){
                 setpgid(0, 0);
             }
             if(execvp(parsed[0], parsed)==-1){
-                printf("bash: %s: command not found\n", parsed[0]);
-                exit(0);
+                printf("\nbash: %s: command not found\n", parsed[0]);
+                exit(1);
             }
             exit(0);
         }

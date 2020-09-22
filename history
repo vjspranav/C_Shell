@@ -1,20 +1,20 @@
+nano 123 & > 456
+vim 12345 & 
+vim 23&
+fg
+bg
+nano 12
+nano 12345
+nano 123
+nano 1 &
+nano 1
 exit
-nano &
-vim &
-123 &
-4
-vim &
-nano &
-lsblk &
-nano &
-vim &
-123 &
-vim &
-nano &
-pinfo 10476
-exit
-123 &
-nano 123 &
-lsblk &
-vim &
+ls -l
+ls
+ls -l > abc.txt
+pwd > 1
+cd ..
+history 5
+cd ~
+ls
 exit

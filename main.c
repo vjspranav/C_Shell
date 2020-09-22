@@ -3,6 +3,7 @@
 #include "input.h"
 char homedir[PATH_MAX];
 char historypath[PATH_MAX];
+int BACKUP_STDOUT_FILENO, BACKUP_STDIN_FILENO;
 
 extern Node *listptr;
 
@@ -22,6 +23,10 @@ void addhistory(){
 
 int main()
 {
+    // Backing up file descriptors of STDIN and STDOUT 
+    BACKUP_STDIN_FILENO=dup(STDIN_FILENO);
+    BACKUP_STDOUT_FILENO=dup(STDOUT_FILENO);
+    
     // Getting the homedir
     if (getcwd(homedir, sizeof(homedir)) == NULL)
         exit(0);

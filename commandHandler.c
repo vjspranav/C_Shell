@@ -3,7 +3,7 @@
 #include "commandHandler.h"
 
 static int num_custom_commands=6;
-int BACKUP_STDOUT_FILENO, BACKUP_STDIN_FILENO;
+int BACKUP_STDOUT_FILENO_1, BACKUP_STDIN_FILENO_1;
 extern int numbgChilds;
 //extern process bgProcess[50]; Moved to Linked List
 extern Node *listptr;
@@ -41,10 +41,10 @@ int isAnd(char *input){
         
 }
 
-int runCommand(char **parsed, char* input){d's
+int runCommand(char **parsed, char* input){
     // Backing up file descriptors of STDIN and STDOUT 
-    BACKUP_STDIN_FILENO=dup(STDIN_FILENO);
-    BACKUP_STDOUT_FILENO=dup(STDOUT_FILENO);
+    BACKUP_STDIN_FILENO_1=dup(STDIN_FILENO);
+    BACKUP_STDOUT_FILENO_1=dup(STDOUT_FILENO);
     
     removeWhiteSpaces(input); // Stores Command without whitespaces in nText
     char* custom_commands[num_custom_commands];
@@ -86,11 +86,17 @@ int runCommand(char **parsed, char* input){d's
         l++;
     }
     if(outflag <=1 && inflag <=1){
+        int w;
         if(inflag){
             strcpy(inpfile, &nText[inp]);
-        }
-        if(outflag){
+            w=strlen(inpfile)-1;
+            while(inpfile[w]==' ') w--;
+            inpfile[w+1]='\0';
+        }if(outflag){
             strcpy(opfile, &nText[op]);
+            w=strlen(opfile)-1;
+            while(opfile[w]==' ') w--;
+            opfile[w+1]='\0';
         }
     }else{
         printf("More than one of input or output Redirection detected. Aborting...\n");
@@ -100,8 +106,8 @@ int runCommand(char **parsed, char* input){d's
     if(inflag==1){
         int infd=open(inpfile, O_RDONLY, 0644);;
         if (dup2(infd, STDIN_FILENO) < 0) {
-            perror("Unable to duplicate file descriptor.");
-            exit(1);
+            perror("Unable to open input file: ");
+            return -1;
         }    
     }
     if(outflag==1){
@@ -113,7 +119,7 @@ int runCommand(char **parsed, char* input){d's
         }
         if (dup2(ofd, STDOUT_FILENO) < 0) {
             perror("Unable to duplicate file descriptor.");
-            exit(1);
+            return -1;
         }           
     }
     // if inflag or outflag are > 1  then multiple in and out Redirection which is not supported and hence will error.
@@ -147,14 +153,14 @@ int runCommand(char **parsed, char* input){d's
         int f = fork();
         if (f>0){
                 // Restoring back to original
-    if (dup2(BACKUP_STDOUT_FILENO, STDOUT_FILENO) < 0) {
-        perror("Could Not restore to original output stream");
-        exit(1);
-    }    
-    if (dup2(BACKUP_STDIN_FILENO, STDIN_FILENO) < 0) {
-        perror("Could Not restore to original input stream");
-        exit(1);
-    }
+                if (dup2(BACKUP_STDOUT_FILENO_1, STDOUT_FILENO) < 0) {
+                    perror("Could Not restore to original output stream");
+                    exit(1);
+                }    
+                if (dup2(BACKUP_STDIN_FILENO_1, STDIN_FILENO) < 0) {
+                    perror("Could Not restore to original input stream");
+                    exit(1);
+                }
 
             if(!is_and){
                 int status;
@@ -184,11 +190,11 @@ int runCommand(char **parsed, char* input){d's
     }
     
     // Restoring back to original
-    if (dup2(BACKUP_STDOUT_FILENO, STDOUT_FILENO) < 0) {
+    if (dup2(BACKUP_STDOUT_FILENO_1, STDOUT_FILENO) < 0) {
         perror("Could Not restore to original output stream");
         exit(1);
     }    
-    if (dup2(BACKUP_STDIN_FILENO, STDIN_FILENO) < 0) {
+    if (dup2(BACKUP_STDIN_FILENO_1, STDIN_FILENO) < 0) {
         perror("Could Not restore to original input stream");
         exit(1);
     }

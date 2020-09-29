@@ -1,20 +1,19 @@
-sort < h 
+echo Hello World
+Hello
 exit
-sort < h
-sort < h  
-sort < h  > h
-exit
-ls -l > h
-ls -l >   h
-cat h
-ls -l > h   
-cat h
-sort < h 
-ls > h
-sort < h
-cat h
-sort < h > h
-cat h
-sort < h
-cat h
-exit
+ 
+ 
+  
+    
+cat history
+ 
+ 
+ 
+ 
+ 
+ 
+  
+    
+    
+                  
+echo Hello World ; quit

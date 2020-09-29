@@ -1,19 +1,20 @@
-echo Hello World
-Hello
+nano &
+vim &
+overkill
+overkill
+overkill
 exit
- 
- 
-  
-    
-cat history
- 
- 
- 
- 
- 
- 
-  
-    
-    
-                  
-echo Hello World ; quit
+nano &
+sleep 4 &
+overkill
+nano &
+sleep 4 &
+vim &
+jobs
+overkill
+exit
+nanoo &
+nano &
+overkill
+overkill
+exit

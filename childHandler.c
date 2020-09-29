@@ -5,7 +5,6 @@
 int numbgChilds=0;
 
 //process bgProcess[50];
-Node *listptr=NULL;
 
 /*
    int getiofid(int id){
@@ -22,13 +21,13 @@ void killChilds(int id){
     if(pid>0){
         Node *t=getNodewithid(pid);
         if(status==0)
-            printf("\n[] %s pid %d exited successfully\n", t->data.name, pid, status, id);
+            printf("\n[%d] %s pid %d exited successfully\n",t->data.num, t->data.name, pid, status, id);
         else
-            printf("\n[] %s pid %d exited abnormally with error: %d\n", t->data.name, pid, status);
+            printf("\n[%d] %s pid %d exited abnormally with error: %d\n",t->data.num, t->data.name, pid, status);
         deleteNodewithid(pid);
     }
 }
 
 int killallChilds(){
-    deleteAllNodes();
+    return deleteAllNodes();
 }

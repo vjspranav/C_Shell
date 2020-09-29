@@ -1,8 +1,9 @@
 #include "headers.h"
 #include "commands.h"
 #include "commandHandler.h"
+#include "childHandler.h"
 
-static int num_custom_commands=6;
+static int num_custom_commands=13;
 int BACKUP_STDOUT_FILENO_1, BACKUP_STDIN_FILENO_1;
 extern int numbgChilds;
 //extern process bgProcess[50]; Moved to Linked List
@@ -54,6 +55,13 @@ int runCommand(char **parsed, char* input){
     custom_commands[3]="history";
     custom_commands[4]="pwd";
     custom_commands[5]="pinfo";
+    custom_commands[6]="setenv";
+    custom_commands[7]="unsetenv";
+    custom_commands[8]="jobs";
+    custom_commands[9]="kjob";
+    custom_commands[10]="fg";
+    custom_commands[11]="bg";
+    custom_commands[12]="overkill";
 
     int i, command_id=0;
     for(i=0;i<num_custom_commands;i++){
@@ -172,6 +180,8 @@ int runCommand(char **parsed, char* input){
                 tempProcess.inbg=0;
                 strcpy(tempProcess.name, parsed[0]);
                 numbgChilds+=1;
+                tempProcess.num=numbgChilds;
+                printf("[%d] %d\n", numbgChilds, f);
                 createListNode(tempProcess);
             }
             return 0;
@@ -208,6 +218,11 @@ int runOwnCommand(int command_id, char* input, char** parsed){
         case 4: print_history(input); break;
         case 5: pwd(); break;
         case 6: pinfo(input); break;
+        case 9: printProcess(); break;
+        case 13: 
+            if(killallChilds()==1); 
+                printf("No Process in bg\n");
+            break;
         default: break;
     }
     return 0;

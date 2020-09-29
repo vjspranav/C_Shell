@@ -14,6 +14,6 @@ int count();
 int deleteNodewithid(int id);
 Node *getNodewithid(int id);
 void printProcess();
-void deleteAllNodes();
+int deleteAllNodes();
 
 #endif

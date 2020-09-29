@@ -1,7 +1,7 @@
 #include "ll.h"
 
 Node *temp, *last;
-extern Node *listptr;
+Node *listptr=NULL;
 
 // Private functions
 void delete_beg(){
@@ -24,6 +24,7 @@ void createListNode(process n){
 	Node *newnode = malloc ( sizeof(Node) );
 	newnode->data.inbg = n.inbg; // Handle  copy
 	newnode->data.id = n.id; // Handle  copy
+ 	newnode->data.num = n.num; // Handle  copy
     strcpy(newnode->data.name, n.name);
 	newnode->next = NULL;
     temp=last;
@@ -81,21 +82,26 @@ void printProcess(){
         printf("No Process in bg\n");
     else{
         while(t->next!=NULL){
-            printf("[%d] %s with id=%d\n", i++, t->data.name, t->data.id);
+            printf("[%d] %s with id=%d\n", t->data.num, t->data.name, t->data.id);
             t=t->next;
         }
-        printf("[%d] %s with id=%d\n", i++, t->data.name, t->data.id);
+        printf("[%d] %s with id=%d\n", t->data.num, t->data.name, t->data.id);
     }
 }
 
-void deleteAllNodes(){
+int deleteAllNodes(){
     Node *t=listptr;
+    if(t==NULL)
+        return 1;
     int i=0;
     while(t!=NULL){
-        kill(t->data.id, SIGKILL);
-        printf("[%d] %s with pid %d Stopped\n", i++, t->data.name, t->data.id);
-        listptr=t->next;
+        int id=t->data.id;
+        kill(id, SIGKILL);
+        //printf("[%d] %s with pid %d Stopped\n", i++, t->data.name, t->data.id);
+        t=t->next;
         //free(t);
-        t=listptr;
-    }   
+//        t=listptr;
+    }
+    return 0;
+//    listptr=temp=last=NULL;
 }

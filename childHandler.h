@@ -6,6 +6,7 @@ struct process{
     int id;
     char name[PATH_MAX];
     int inbg;
+    int num;
 };
 
 typedef struct process process;

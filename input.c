@@ -1,4 +1,4 @@
-#include "commandHandler.h"
+#include "pipeHandler.h"
 #include "headers.h"
 #include "history.h"
 #include "input.h"
@@ -94,7 +94,7 @@ int checkMulti(char* inp){
             int i=0;
             while(temp[i]==' ') i++;
             parseString(&temp[i], parsed);    
-            runCommand(parsed, &og[i]);
+            checkPipeandrunCommand(parsed, &og[i]);
             memset(og, 0, strlen(og));
         }
     } while( *inp );

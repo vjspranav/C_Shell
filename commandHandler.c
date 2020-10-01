@@ -177,6 +177,15 @@ int runCommand(char **parsed, char* input){
                 do{
                     waitpid(f, &status, WUNTRACED);
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
+                if (WIFSTOPPED(status)) {
+                    tempProcess.id=f;
+                    tempProcess.inbg=0;
+                    strcpy(tempProcess.name, parsed[0]);
+                    numbgChilds+=1;
+                    tempProcess.num=numbgChilds;
+                    printf("[%d] %d\n", numbgChilds, f);
+                    createListNode(tempProcess);                        
+                }
             }else{
                 tempProcess.id=f;
                 tempProcess.inbg=0;

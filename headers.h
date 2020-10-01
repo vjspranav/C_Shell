@@ -14,8 +14,11 @@
 #include <fcntl.h>
 #include <signal.h>
 
-//for handling child
+// for handling child
 #include "childHandler.h"
 
 // Linked List
 #include "ll.h"
+
+// for signal handling
+#include "signalHandler.h"

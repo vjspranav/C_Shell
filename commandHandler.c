@@ -221,6 +221,8 @@ int runOwnCommand(int command_id, char* input, char** parsed){
         case 4: print_history(input); break;
         case 5: pwd(); break;
         case 6: pinfo(input); break;
+        case 7: csetenv(parsed); break;
+        case 8: cunsetenv(parsed); break;
         case 9: printProcess(); break;
         case 13: 
             if(killallChilds()==1); 

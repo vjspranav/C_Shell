@@ -4,3 +4,4 @@
 #include "ls.h"
 #include "pwd.h"
 #include "pinfo.h"
+#include "env.h"

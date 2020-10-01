@@ -1,20 +1,20 @@
-`ðãÞ
-@ðãÞ
-lsblk | cat | grep nvme > test
-cat test
+setenv var2
+setenv
+setenv var b b
+$var1
+cat $var1
+ls $var1
 exit
-lsblk | cat | grep nvme
-lsblk | cat | grep nvme
-lsblk | cat | grep nvme
-p@g†Y
-`@g†Y
-`@g†Y
-@@g†Y
-lsblk | cat | grep nvme
 ls
-echo Hello 
-echo Hello 
-lsblk | cat | grep nvme
-
-
-lsblk | cat | grep nvme
+setenv var1 Hello
+setenv var2
+exit
+setenv var1 Hello
+setenv var2
+unsetenv
+unsetenv H
+unsetenv var1
+exit
+setenv
+setenc H
+exit

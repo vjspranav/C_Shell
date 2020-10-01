@@ -1,20 +1,20 @@
-setenv var2
-setenv
-setenv var b b
-$var1
-cat $var1
-ls $var1
+fg 1
 exit
-ls
-setenv var1 Hello
-setenv var2
+nano &
+vim &
+fg 1
+jobs
+fg 2
+quit
+sleep 10 &
+bg 1
+jobs
 exit
-setenv var1 Hello
-setenv var2
-unsetenv
-unsetenv H
-unsetenv var1
-exit
-setenv
-setenc H
+nano &
+fg 1
+vim &
+fg 2
+jobs
+fg 2
+jobs
 exit

@@ -75,6 +75,16 @@ Node *getNodewithid(int id){
     return NULL;
 }
 
+int getidwithNum(int num){
+	Node *t=listptr, *t1;
+    while(t!=NULL){
+        if(t->data.num==num)
+            return t->data.id;
+        t=t->next;
+    }
+    return -1;
+}
+
 void printProcess(){
 	int i=0;
     Node *t=listptr;

@@ -13,6 +13,7 @@ void createListNode(process n);
 int count();
 int deleteNodewithid(int id);
 Node *getNodewithid(int id);
+int getidwithNum(int num);
 void printProcess();
 int deleteAllNodes();
 

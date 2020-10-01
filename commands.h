@@ -5,3 +5,4 @@
 #include "pwd.h"
 #include "pinfo.h"
 #include "env.h"
+#include "fgbg.h"

@@ -224,6 +224,8 @@ int runOwnCommand(int command_id, char* input, char** parsed){
         case 7: csetenv(parsed); break;
         case 8: cunsetenv(parsed); break;
         case 9: printProcess(); break;
+        case 11: fg(parsed); break;
+        case 12: bg(parsed); break;
         case 13: 
             if(killallChilds()==1); 
                 printf("No Process in bg\n");

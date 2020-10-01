@@ -160,6 +160,7 @@ int runCommand(char **parsed, char* input){
         }
         int f = fork();
         if (f>0){
+            if(inflag || outflag){
                 // Restoring back to original
                 if (dup2(BACKUP_STDOUT_FILENO_1, STDOUT_FILENO) < 0) {
                     perror("Could Not restore to original output stream");
@@ -169,6 +170,7 @@ int runCommand(char **parsed, char* input){
                     perror("Could Not restore to original input stream");
                     exit(1);
                 }
+            }
 
             if(!is_and){
                 int status;
@@ -198,15 +200,16 @@ int runCommand(char **parsed, char* input){
             exit(0);
         }
     }
-    
-    // Restoring back to original
-    if (dup2(BACKUP_STDOUT_FILENO_1, STDOUT_FILENO) < 0) {
-        perror("Could Not restore to original output stream");
-        exit(1);
-    }    
-    if (dup2(BACKUP_STDIN_FILENO_1, STDIN_FILENO) < 0) {
-        perror("Could Not restore to original input stream");
-        exit(1);
+    if(inflag || outflag){
+        // Restoring back to original
+        if (dup2(BACKUP_STDOUT_FILENO_1, STDOUT_FILENO) < 0) {
+            perror("Could Not restore to original output stream");
+            exit(1);
+        }    
+        if (dup2(BACKUP_STDIN_FILENO_1, STDIN_FILENO) < 0) {
+            perror("Could Not restore to original input stream");
+            exit(1);
+        }
     }
 }
 

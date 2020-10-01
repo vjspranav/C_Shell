@@ -1,20 +1,20 @@
-sleep 4 &
-overkill
-nano &
-sleep 4 &
-vim &
-jobs
-overkill
+`ðãÞ
+@ðãÞ
+lsblk | cat | grep nvme > test
+cat test
 exit
-nanoo &
-nano &
-overkill
-overkill
-exit
-echo   Hello     World   ;
-exit
-echo Hello World
-echo Hello World | 
-exit
-echo Hello      World   ; echo Hello |
-exit
+lsblk | cat | grep nvme
+lsblk | cat | grep nvme
+lsblk | cat | grep nvme
+p@g†Y
+`@g†Y
+`@g†Y
+@@g†Y
+lsblk | cat | grep nvme
+ls
+echo Hello 
+echo Hello 
+lsblk | cat | grep nvme
+
+
+lsblk | cat | grep nvme

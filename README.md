@@ -1,5 +1,14 @@
 # Terminal Written in C
 A custom terminal for Linux supporting bash commands with support for almost all built in functions either through system call or custom written built in function.
+Takes care of input output redirection with
+```
+ls > test.txt
+sort < in.txt > out.txt
+```
+Does pipe handling (with IO redirection too)
+```
+ls | cat | grep test > out.txt
+```
 
 ## Requirements
 __GCC Version >= 10.2.0__  
@@ -9,6 +18,7 @@ Will work for lower Versions also but there could be unexpected warnings and err
 __Run The Following command in the dir where you cloned the repo__
 ```
 make
+./terminal
 ```
 or
 __Copy Paste the following__
@@ -16,6 +26,7 @@ __Copy Paste the following__
 git clone https://github.com/vjspranav/C_Shell -b v1
 cd C_Shell
 make
+./terminal
 ```
 
 ## Custom Functions
@@ -75,6 +86,55 @@ Executable Path -- /usr/bin/gcc
 ```
 >> Gives info of the process with process id pid, if no pid is given the info of shell is shown.
 
+7. __setenv__
+```
+setenv <name> <value>
+```
+> Set value to to variable name, if variable exists it's value is not overwritten, if no value is provided string.
+
+8. __unsetenv__
+```
+unsetenv <name>
+```
+> Clears value of variable name.
+
+9. __jobs__
+```
+jobs
+```
+will give
+```
+<vjspranav@archlinux:~>$ jobs
+[1] Stopped nano with id=21076
+[2] Stopped vim with id=21078 
+[3] Running sleep with id=21081
+```
+> Will print a list of background running processes with jobnumber and pid
+
+10. __kjob__
+```
+kjob <jobnumber> <signal>
+```
+> Will send kill signal __signal__ to process id with __job number__ which we get from jobs  
+
+11. __fg__
+```
+fg <job number>
+```
+> Brings the running or stopped background job corresponding to ​jobnumber​ to the foreground, and changes its state to ​running​. The shellshould throw an error if no job with the given job number exists
+
+12. __bg__
+```
+bg <job number>
+```
+> Changes the state of a stopped background job to running (in thebackground). The shell should throw an error if no background jobcorresponding to the given job number exists.
+
+13. __overkill__
+```
+overkill
+```
+> Kills all created background processes.
+
 ## Files Description
 All headers files have Macros and function definations for global accesibility of the functions in the respective C files
 
@@ -102,6 +162,9 @@ All headers files have Macros and function definations for global accesibility o
 * __childHandler.c__
 > Has a killChild function that starts when a child process has completed successfully and has a kill all function that kills all paused childs in background on terminal exit.
 
+* __pipeHandler.c__
+> Has the code that handles pipes.
+
 * __cd.c__
 > Has code for changing directory.
 
@@ -119,3 +182,12 @@ All headers files have Macros and function definations for global accesibility o
 
 * __pinfo.c__
 > Prints Process info given pid else prints the info of terminal
+
+* __env.c__
+> Has code for setenv and unsetenv
+
+* __fgbg.c__
+> Has code for fg bg and kjob
+
+* __signalHandler__
+> Handles signal interrupts ctrl+C and ctrl+Z

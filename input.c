@@ -30,13 +30,20 @@ int is_empty(char s[]) {
 
 int input() {
         char *inp=NULL;
-        size_t len = 0;
-        getline(&inp, &len, stdin);
-        if(!inp[0]){
-            killallChilds();
-            printf("\n");
-            exit(0);
+        inp=malloc(PATH_MAX);
+        int len = 0;
+        while(1){
+            inp[len]=getchar();
+            if(inp[len]=='\n')
+                break;
+            if(inp[len]==EOF){
+                killallChilds();
+                printf("\n");
+                exit(0);
+            }
+            len++;
         }
+        inp[len+1]='\0';
         // Fixes for pressing enter without any command
         if(inp[0]=='\n')
             return 0;

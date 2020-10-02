@@ -42,21 +42,10 @@ int isAnd(char *input){
         
 }
 
-int runCommand(char **parsed, char* input, int in_des, int out_des){
+int runCommand(char **parsed, char* input){
     // Backing up file descriptors of STDIN and STDOUT 
     BACKUP_STDIN_FILENO_1=dup(STDIN_FILENO);
     BACKUP_STDOUT_FILENO_1=dup(STDOUT_FILENO);
-    
-    printf("Running %s\n", input);
-    //replace stdin with given input
-    if (in_des != 0){
-        dup2(in_des, 0);
-    }
-
-    //replace stdout with given output
-    if (out_des != 1){
-        dup2(out_des, 1);
-    }
     
     removeWhiteSpaces(input); // Stores Command without whitespaces in nText
     char* custom_commands[num_custom_commands];

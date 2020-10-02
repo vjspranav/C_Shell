@@ -1,20 +1,20 @@
-ls | grep input
-ls | cat
-ls | cat | grep input
-ls | cat | grep input
-ls | cat | grep input | cat | grep main
-ls | grep input
-ls | cat
-ls | grep input
-ls | cat | grep input
-ls | grep input
-ls | wc
-ls | cat | grep input
-ls | cat | grep input
-ls | cat | grep input
+cd -
+cd ..
+cd -
 exit
-ls | cat | grep input
-ls | cat | grep input
-ls } cat | grep input
-ls | cat | grep input
-lsblk | cat
+cd -
+exit
+cd -
+cd -
+cd ..
+cd /home/vjspranav
+cd -
+cd ~
+ls
+mkdir test
+cd test
+ls
+cd .
+cd ..
+ls
+exit

@@ -1,20 +1,20 @@
-nano &
-vim &
-sleep 10 &
-firefox & ; jobs
-overkill
+pPo©ã
+`Po©ã
+`Po©ã
+@Po©ã
+pPo©ã
+`Po©ã
+`Po©ã
+@Po©ã
+pPo©ã
+`Po©ã
+`Po©ã
+@Po©ã
+echo Hello WOrld > test
+cat test
+ls >> test
+cat test
+ cd /home/vjspranav
 exit
-firefox & ; jobs
-./terminal
 exit
-rxit
-exit
-vim
-nano &
-overkill
-gedit
-jobs
-bg 3
-jobs
-overkill
-exit
+quit

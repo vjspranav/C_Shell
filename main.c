@@ -40,7 +40,7 @@ int main(){
     // Ctr+C
     signal(SIGINT, ctcHandler);
     // Ctrl+Z
-    signal(SIGTSTP, ctcHandler);
+    signal(SIGTSTP, ctzHandler);
     signal(SIGQUIT, SIG_IGN);
     
     while (1)

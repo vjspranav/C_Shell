@@ -43,6 +43,8 @@ int checkPipe(char *input){
 }
 
 int runPipe(char *input){
+    int fo=fork();
+    if(fo==0){
     char *commands[1000];
     parsePipes(input, commands);
     int i=0, pipe_des[2];
@@ -56,6 +58,7 @@ int runPipe(char *input){
         int f=fork();
         
         if(f==0){
+            //printf("%d", EOF);
             close(pipe_des[1]);
             //Setting stdin to read side of pipe
             if (dup2(pipe_des[0], STDIN_FILENO) < 0) {
@@ -80,11 +83,12 @@ int runPipe(char *input){
                 return -1;
             }
             if(commands[i+1]==NULL){
+                //printf("%d", EOF);
+                close(pipe_des[1]);
                 if (dup2(BACKUP_STDOUT_FILENO_p, STDOUT_FILENO) < 0) {
                     perror("Could Not restore to original output stream");
                     exit(1);
                 }      
-                close(pipe_des[1]);
                 isfinal=1;
             }
 
@@ -99,6 +103,10 @@ int runPipe(char *input){
             if(isfinal){
                 exit(0);
             }
+            //FILE *tF;
+            //tF=fopen("test", "a");
+            //fprintf(tF, "STARTPIPE:Child id=%d command=%s\n", f, parsed[0]);
+            //fclose(tF);
             // Waiting for child
             int status;
             if(!isfinal){
@@ -106,11 +114,25 @@ int runPipe(char *input){
                     waitpid(f, &status, WUNTRACED);
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
             }
-            if(f!=0)
+            if(f!=0){
+                //FILE *tF;
+                //tF=fopen("test", "a");
+                //fprintf(tF, "ENDPIPE:Child id=%d command=%s\n", f, parsed[0]);
+                //fclose(tF);
                 kill(f, SIGKILL);
-            close(pipe_des[0]);
-            close(pipe_des[1]);
+            }
+            exit(0);
+//            close(pipe_des[0]);
+//            close(pipe_des[1]);
         }
+    }else{
+        int status;
+        do{
+           waitpid(fo, &status, WUNTRACED);
+        }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
+                kill(fo, SIGKILL);
+        
+    }
 }
 
 

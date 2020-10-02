@@ -180,6 +180,7 @@ int runCommand(char **parsed, char* input){
                 do{
                     waitpid(f, &status, WUNTRACED);
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));                
+                //fflush(stdout);
                 tcsetpgrp(STDIN_FILENO, getpgid(0));
                 signal(SIGTTIN, SIG_DFL);
                 signal(SIGTTOU, SIG_DFL);
@@ -208,10 +209,17 @@ int runCommand(char **parsed, char* input){
             //if(is_and){
                 setpgid(0, 0);
             //}
+            //FILE *tF;
+            //tF=fopen("test", "a");
+            //fprintf(tF, "START:Child id=%d command=%s\n", getpid(), parsed[0]);
+            //fclose(tF);
             if(execvp(parsed[0], parsed)==-1){
                 printf("\nbash: %s: command not found\n", parsed[0]);
                 exit(1);
             }
+            //tF=fopen("test", "a");
+            //fprintf(tF, "END:Child id=%d command=%s\n", getpid(), parsed[0]);
+            //fclose(tF);
             exit(0);
         }
     }

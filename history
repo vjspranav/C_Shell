@@ -1,20 +1,20 @@
-lw -
-ls -
-ls -l
-exi
-exit
-ls
-ls -l
-ls -al
-ls | grep input
-ls | grep input | cat
-ls
-ls -l
-nano &
-vim &
-overkill
-nano &
-vim &
-ls | cat > test
 cat test
+ls | grep input | cat > t1
+cat t1
+ls | grep input | cat | grep history
+ls | grep input | cat | grep history > t1
+cat t1
 exit
+ls | grep input | cat
+exit
+ls | grep input | cat | grep history
+ls | grep input | cat | grep history | cat
+ls | wc
+cat /proc/cpuinfo
+cat /proc/cpuinfo | grep bugs
+exit
+ls | grep input
+ls | grep input | cat 
+exit
+ls | grep input | cat
+ls | cat1

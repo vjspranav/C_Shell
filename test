@@ -1,0 +1,32 @@
+echo.h	history.c	history.h	input.h	ls.c
+commands.h	ll.h	headers.h	signalHandler.h	input.c
+START:Child id=20032 command=cat
+STARTPIPE:Child id=20034 command=ls
+START:Child id=20036 command=grep
+START:Child id=20038 command=cat
+ENDPIPE:Child id=20034 command=ls
+START:Child id=20055 command=cat
+STARTPIPE:Child id=20058 command=ls
+START:Child id=20060 command=grep
+START:Child id=20062 command=cat
+START:Child id=20064 command=grep
+ENDPIPE:Child id=20058 command=ls
+STARTPIPE:Child id=20088 command=ls
+START:Child id=20090 command=grep
+START:Child id=20092 command=cat
+START:Child id=20094 command=grep
+ENDPIPE:Child id=20088 command=ls
+START:Child id=20117 command=cat
+START:Child id=20161 command=grep
+START:Child id=20163 command=cat
+START:Child id=20221 command=grep
+START:Child id=20223 command=cat
+START:Child id=20225 command=grep
+START:Child id=20254 command=grep
+START:Child id=20256 command=cat
+START:Child id=20258 command=grep
+START:Child id=20260 command=cat
+START:Child id=20294 command=wc
+START:Child id=20303 command=cat
+START:Child id=20306 command=cat
+START:Child id=20308 command=grep

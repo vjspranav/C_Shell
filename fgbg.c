@@ -19,6 +19,10 @@ int fg(char **parsed){
     }
     int num = sttoi(parsed[1]);
     int pid=getidwithNum(num);
+    if(num>numbgChilds || pid==-1){
+        printf("Process with job number %d doesn't exist\n", num);
+        return -1;
+    }
     Node *curProcess=getNodewithid(pid);
     if(pid!=-1){
         deleteNodewithid(pid);
@@ -57,6 +61,10 @@ int bg(char **parsed){
     }
     int num = sttoi(parsed[1]);
     int pid=getidwithNum(num);
+    if(num>numbgChilds || pid==-1){
+        printf("Process with job number %d doesn't exist\n", num);
+        return -1;
+    }
     Node *curProcess=getNodewithid(pid);
     kill(pid, SIGCONT);
     return 0;

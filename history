@@ -1,15 +1,3 @@
-ls | wc
-cat /proc/cpuinfo
-cat /proc/cpuinfo | grep bugs
-exit
-ls | grep input
-ls | grep input | cat 
-exit
-ls | grep input | cat
-ls | cat1
-nano &
-vim &
-jobs
 kjob 123
 kjob 123 4
 nano &
@@ -17,4 +5,16 @@ kjob 5 5
 exit
 nano &
 kjob 5 5
+exit
+fg 4
+exit
+fg 4
+bg 4
+exit
+cd /hom/vjspranav
+cd /home/vjspranav
+cd -
+cd -
+cd -
+cd -
 exit

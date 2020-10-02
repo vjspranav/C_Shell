@@ -1,10 +1,12 @@
 #include "env.h"
 #include "headers.h"
 
+extern int numbgChilds;
+
 int sttoi (char * input){
     int output;
     char * end;
-    output = strtol (input, & end, 10);
+    output = strtol (input, & end, 0);
     return output;
 }
 
@@ -69,7 +71,11 @@ int kjob(char **parsed){
     }
     int num = sttoi(parsed[1]);
     int sig = sttoi(parsed[2]);
-    int pid=getidwithNum(num);    
+    int pid=getidwithNum(num);
+    if(num>numbgChilds || pid==-1){
+        printf("Process with job number %d doesn't exist\n", num);
+        return -1;
+    }
     if (kill(pid, sig) == -1) {
         perror("Error: ");
     }

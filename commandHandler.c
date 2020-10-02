@@ -173,10 +173,16 @@ int runCommand(char **parsed, char* input){
             }
 
             if(!is_and){
+                signal(SIGTTIN, SIG_IGN);
+                signal(SIGTTOU, SIG_IGN);
+                tcsetpgrp(STDIN_FILENO, f);                
                 int status;
                 do{
                     waitpid(f, &status, WUNTRACED);
-                }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
+                }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));                
+                tcsetpgrp(STDIN_FILENO, getpgid(0));
+                signal(SIGTTIN, SIG_DFL);
+                signal(SIGTTOU, SIG_DFL);
                 if (WIFSTOPPED(status)) {
                     tempProcess.id=f;
                     tempProcess.inbg=0;
@@ -199,9 +205,9 @@ int runCommand(char **parsed, char* input){
         }else if(f<0){
             printf("\nFork Failed\n");
         }else {
-            if(is_and){
+            //if(is_and){
                 setpgid(0, 0);
-            }
+            //}
             if(execvp(parsed[0], parsed)==-1){
                 printf("\nbash: %s: command not found\n", parsed[0]);
                 exit(1);

@@ -1,20 +1,20 @@
-nano &
-vim &
-fg 1
-jobs
-fg 2
-quit
-sleep 10 &
-bg 1
-jobs
-exit
-nano &
-fg 1
-vim &
-fg 2
-jobs
-fg 2
-jobs
-exit
+[A
+f
 nano
 vim
+vim
+vim
+vim
+vim &
+fg 1
+exit
+vim
+vim
+vim
+nano
+vim
+vim
+vim
+fg
+jobs
+exit

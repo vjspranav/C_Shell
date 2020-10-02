@@ -2,6 +2,7 @@
 #include "prompt.h"
 #include "input.h"
 char homedir[PATH_MAX];
+char curDir[PATH_MAX], prevDir[PATH_MAX], tDir[PATH_MAX];
 char historypath[PATH_MAX];
 int BACKUP_STDOUT_FILENO, BACKUP_STDIN_FILENO;
 int main_terminal_id;
@@ -21,8 +22,8 @@ void addhistory(){
 
 }
 
-int main()
-{
+int main(){
+    system("clear");
     // Backing up file descriptors of STDIN and STDOUT 
     BACKUP_STDIN_FILENO=dup(STDIN_FILENO);
     BACKUP_STDOUT_FILENO=dup(STDOUT_FILENO);
@@ -33,17 +34,23 @@ int main()
     if (getcwd(historypath, sizeof(historypath)) == NULL)
         exit(0);
     addhistory();
-
+    strcpy(curDir, homedir);
     // For andling bg childs
     signal(SIGCHLD, killChilds);
     // Ctr+C
     signal(SIGINT, ctcHandler);
     // Ctrl+Z
-    signal(SIGTSTP, ctcHandler);\
+    signal(SIGTSTP, ctcHandler);
     signal(SIGQUIT, SIG_IGN);
     
     while (1)
     {
+        if (getcwd(tDir, sizeof(tDir)) == NULL)
+            exit(0);
+        if(strcmp(tDir, curDir)!=0){
+            strcpy(prevDir, curDir);
+            strcpy(curDir, tDir);
+        }
         prompt();
         input();
     }

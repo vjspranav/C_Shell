@@ -3,11 +3,22 @@
 
 int cd(char* path){
     extern char homedir[PATH_MAX];
+    extern char prevDir[PATH_MAX];
     /*
      * If Dir starts with ~ changw ith respect to homedir
      * 
      */
-    if('~'==path[0]){
+    if('-'==path[0]){
+        if(strlen(path)>1){
+            printf("'-' with extra path is not supported. Aborting..\n");
+        }else{
+            if(prevDir[0]){
+                printf("%s\n", prevDir);
+                cd(prevDir);
+            }else
+                printf("Directory not changed yet.\n");
+        }
+    }else if('~'==path[0]){
         int i=0, j=1;
         char npath[strlen(homedir)+strlen(path)];
         while(homedir[i]){

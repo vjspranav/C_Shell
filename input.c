@@ -33,6 +33,7 @@ int input() {
         size_t len = 0;
         getline(&inp, &len, stdin);
         if(!inp[0]){
+            killallChilds();
             printf("\n");
             exit(0);
         }

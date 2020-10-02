@@ -1,12 +1,5 @@
 f
 exit
-vim &
-exit
-vim 
-f
-exit
-f
-exit
 f
 emacs
 nano
@@ -18,3 +11,10 @@ fg
 exit
 f
 exit
+nano &
+vim &
+exit
+nano &
+vim &
+nano &
+vim &

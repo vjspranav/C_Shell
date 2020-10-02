@@ -50,7 +50,7 @@ int bg(char **parsed){
     int i=0;
     while(parsed[i]) i++;
     if(i!=2){
-        printf("Error Wrong number of args expected 2 got %d\n", i-1);
+        printf("Error Wrong number of args expected 1 got %d\n", i-1);
         return -1;
     }
     int num = sttoi(parsed[1]);
@@ -60,3 +60,17 @@ int bg(char **parsed){
     return 0;
 }
 
+int kjob(char **parsed){
+    int i=0;
+    while(parsed[i]) i++;
+    if(i!=3){
+        printf("Error Wrong number of args expected 3 got %d\n", i-1);
+        return -1;
+    }
+    int num = sttoi(parsed[1]);
+    int sig = sttoi(parsed[2]);
+    int pid=getidwithNum(num);    
+    if (kill(pid, sig) == -1) {
+        perror("Error: ");
+    }
+}

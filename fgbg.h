@@ -3,5 +3,6 @@
 
 int fg(char **parsed);
 int bg(char **parsed);
+int kjob(char **parsed);
 
 #endif

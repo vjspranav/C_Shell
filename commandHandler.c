@@ -11,9 +11,6 @@ extern Node *listptr;
 process tempProcess;
 char nText[PATH_MAX];
 
-// Test File
-FILE* tFile;
-
 void removeWhiteSpaces(char *text){
     int start=0, end=strlen(text);
     while(text[start]==' ') start+=1;
@@ -46,12 +43,6 @@ int isAnd(char *input){
 }
 
 int runCommand(char **parsed, char* input){
-     tFile=fopen("test", "a");
-     fprintf(tFile, "command=%s\n", input);
-     int ii;
-     for(ii=0;parsed[ii];ii++)
-        fprintf(tFile, "command=%s\n", parsed[ii]);
-    fclose(tFile);
     // Backing up file descriptors of STDIN and STDOUT 
     BACKUP_STDIN_FILENO_1=dup(STDIN_FILENO);
     BACKUP_STDOUT_FILENO_1=dup(STDOUT_FILENO);

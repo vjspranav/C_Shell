@@ -1,37 +1,20 @@
-ls > t1
-cat t1
-command=cat t1
-command=command=cat t1
-ls > t1
-ã
-command=ã
-command=5
-ls > t1
-ã
-command=ã
-command=5
-ls > t1
-ps
-0[
-command=0[
-ls
-
-nd=5
-command=nd=5
-ls > t1
-ps
-0[
-command=0[
-ls
-[
-command=0[
-ls
-command=nd=5
-ls
-command=>
-command=t1
-ps
-0[
-command=0[
-ls
-[
+pPo©ã
+`Po©ã
+`Po©ã
+@Po©ã
+pPo©ã
+`Po©ã
+`Po©ã
+@Po©ã
+pPo©ã
+`Po©ã
+`Po©ã
+@Po©ã
+echo Hello WOrld > test
+cat test
+ls >> test
+cat test
+ cd /home/vjspranav
+exit
+exit
+quit

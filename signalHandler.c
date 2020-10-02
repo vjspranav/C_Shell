@@ -7,7 +7,11 @@ void ctcHandler(int id) {
 }
 
 void ctzHandler(int id) {
-    if(getpid()==main_terminal_id)
+    int status;
+    int pid=waitpid(-1, &status, WNOHANG);
+    if(pid==main_terminal_id){
+        printf("Same\n");
         return;
+    }
     kill(getpid(), SIGTSTP);
 }

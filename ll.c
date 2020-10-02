@@ -19,6 +19,35 @@ void delete_last(){
     free(t);	
 }
 
+char getState(int id){
+    char buff[1000];
+    char c;
+    int d, i;
+    struct stat state;
+    snprintf(buff, 1000, "/proc/%d/stat", id);
+    FILE* fp = fopen(buff, "r");
+    if (fp) {
+        if(!fscanf(fp, "%d %s %c", &d, &buff, &c)) {
+            printf("%d Not accessible\n", d);
+            perror("Error");
+            return -1;
+        }else{
+            return c;
+        }
+    }
+}
+
+void printState(char st){
+    if(st=='T')
+        printf("Stopped");
+    else if(st=='S')
+        printf("Running");
+    else if(st=='R')
+        printf("Running");    
+    else
+        printf("Unknown");
+}
+
 // Public Functions
 void createListNode(process n){
 	Node *newnode = malloc ( sizeof(Node) );
@@ -92,10 +121,16 @@ void printProcess(){
         printf("No Process in bg\n");
     else{
         while(t->next!=NULL){
-            printf("[%d] %s with id=%d\n", t->data.num, t->data.name, t->data.id);
+            char st=getState(t->data.id);
+            printf("[%d] ", t->data.num);
+            printState(st);
+            printf(" %s with id=%d\n", t->data.name, t->data.id);
             t=t->next;
         }
-        printf("[%d] %s with id=%d\n", t->data.num, t->data.name, t->data.id);
+        char st=getState(t->data.id);
+        printf("[%d] ", t->data.num);
+        printState(st);
+        printf(" %s with id=%d\n", t->data.name, t->data.id);
     }
 }
 

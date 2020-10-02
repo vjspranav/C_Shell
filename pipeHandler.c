@@ -105,8 +105,9 @@ int runPipe(char *input){
                 do{
                     waitpid(f, &status, WUNTRACED);
                 }while(!WIFEXITED(status) && !WIFSIGNALED(status) && !WIFSTOPPED(status));
-                kill(f, SIGKILL);
             }
+            if(f!=0)
+                kill(f, SIGKILL);
             close(pipe_des[0]);
             close(pipe_des[1]);
         }

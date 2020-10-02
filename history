@@ -1,20 +1,20 @@
-cd -
-cd ..
-cd -
+firefox & ; jobs
 exit
-cd -
+nano &
+vim &
+sleep 10 &
 exit
-cd -
-cd -
-cd ..
-cd /home/vjspranav
-cd -
-cd ~
-ls
-mkdir test
-cd test
-ls
-cd .
-cd ..
-ls
+nano &
+vim &
+sleep 10 &
+jobs
 exit
+nano &
+exit
+nano &
+vim &
+sleep 10 &
+firefox & ; jobs
+overkill
+exit
+firefox & ; jobs
